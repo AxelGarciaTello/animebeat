@@ -1,0 +1,45 @@
+spring:
+  config:
+    activate:
+      on-profile: default
+server:
+  port: ${PORT_MS}
+  
+logging:
+  file:
+    name: animebeat.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    org.springframework: INFO
+    mx.gob.imss.sisdet: DEBUG
+  
+management:
+  endpoints:
+    web:
+      base-path: /animebeat/actuator
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+  health:
+    defaults:
+      enabled: false
+    db:
+      enabled: true
+    ping:
+      enabled: true
+  info:
+    git:
+      mode: full
+
+
+springdoc:
+  api-docs:
+    path: /animebeat/docs/api-docs
+    enabled: ${DOCS}
+  swagger-ui:
+    path: /animebeat/docs/swagger-ui.html
+    enabled: ${SWAGGER}
