@@ -5,8 +5,10 @@ target/
 !**/src/test/**/target/
 .mvn
 .gitattributes
-*.log
+*.log*
 mvnw*
+.env.local
+uploads
 
 ### STS ###
 .apt_generated

@@ -7,6 +7,9 @@ WORKDIR /app
 # Copiar el archivo JAR a la imagen
 COPY target/animebeat-0.0.1-SNAPSHOT.jar app.jar
 
+# Crear la carpeta uploads
+RUN mkdir uploads
+
 # Especificar el puerto en el que se ejecutará la app
 EXPOSE 8080
 

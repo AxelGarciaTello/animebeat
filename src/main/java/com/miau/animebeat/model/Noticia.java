@@ -14,6 +14,8 @@ public class Noticia {
     private String titulo;
     @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "Noticia")
     private String noticia;
+    @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "Imagen de la noticia")
+    private String imagen;
     @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "Persona que escribio la noticia")
     private String cveUsuarioAlta;
     @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "Fecha en que se escribio la noticia")

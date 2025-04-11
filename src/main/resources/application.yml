@@ -2,6 +2,29 @@ spring:
   config:
     activate:
       on-profile: default
+  datasource:
+    url: ${BD_URL}
+    username: ${BD_USER}
+    password: ${BD_PASS}
+    driverClassName:  com.mysql.cj.jdbc.Driver
+    hikari:
+      maximumPoolSize: ${MAXIMUMPOOLSIZE}
+
+# Enable multipart uploads
+  servlet:
+    multipart:
+      enabled: true
+# Threshold after which files are written to disk.
+      file-size-threshold: 2KB
+# Max file size.
+      max-file-size: 200MB
+# Max Request Size
+      max-request-size: 215MB     
+
+## File Storage Properties
+file:
+  upload-dir: ${FILE_URL}
+
 server:
   port: ${PORT_MS}
   
@@ -41,5 +64,5 @@ springdoc:
     path: /animebeat/docs/api-docs
     enabled: ${DOCS}
   swagger-ui:
-    path: /animebeat/docs/swagger-ui.html
+    path: /animebeat/docs/swagger-ui/index.html
     enabled: ${SWAGGER}

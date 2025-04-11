@@ -70,12 +70,15 @@ public class NoticiaController {
             @Content(mediaType = "application/json", schema = @Schema(implementation = RespuestaError.class))
         })
     })
-    @GetMapping(value = "/noticas/{idNoticia}", produces = { "application/json" })
+    @GetMapping(value = "/noticias/{idNoticia}", produces = { "application/json" })
     public ResponseEntity<?> obtenerNoticia (
         @Parameter(in = ParameterIn.DEFAULT, description = "Id de la noticia", schema = @Schema()) @PathVariable Long idNoticia
     ) {
         try {
-            return new ResponseEntity<>(iNoticiaService.obtenerNoticia(idNoticia), HttpStatus.OK);
+            Noticia noticia = iNoticiaService.obtenerNoticia(idNoticia);
+            if (noticia == null)
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(noticia, HttpStatus.OK);
         } catch (BusinessException be) {
 			log.error("Error al consultar: {}", be.getMessage());
 			int numberHTTPDesired = Integer.parseInt(be.getRespuestaError().getCode());
